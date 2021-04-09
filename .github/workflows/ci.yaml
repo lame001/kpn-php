@@ -1,0 +1,28 @@
+name: ci
+on: 
+  push:
+    branches:
+      - main
+jobs: 
+  docker: 
+    runs-on: ubuntu-18.04
+    steps: 
+      - 
+        name: checkout
+        uses: actions/checkout@v2
+      -
+        name: test
+        run: |
+        
+          set -x
+          
+          docker build -t kpn-php:test .
+          
+          docker run --detach --name test kpn-php:test
+          
+          while true
+            do
+              sleep 10
+              docker logs test 2>& 1 | grep started && break
+            done
+            
