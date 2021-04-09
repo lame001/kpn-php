@@ -1,2 +1,3 @@
 # kpn-php
-bla
+
+![ci](https://github.com/taylandogan/kpn-php/workflows/ci/badge.svg?branch=main)
